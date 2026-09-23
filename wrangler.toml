@@ -7,7 +7,7 @@ CHECK_INTERVAL_MINUTES = "3"
 
 [[kv_namespaces]]
 binding = "SITES"
-id = "REPLACE_WITH_YOUR_KV_NAMESPACE_ID"
+id = "872a7bab5ec844118b9f4d5caca2f1e5"
 
 [triggers]
 crons = ["*/3 * * * *"]
