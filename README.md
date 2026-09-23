@@ -5,7 +5,7 @@ A Cloudflare Worker website that lets you add URLs and periodically request them
 ## Features
 
 - Add/remove any HTTP/HTTPS URL
-- Automatic check every 5 minutes
+- Automatic check every 3 minutes
 - Manual "Check now"
 - Online/offline status
 - HTTP status
@@ -35,7 +35,7 @@ Use it only for websites you are authorized to monitor.
 3. Create a KV namespace.
 4. Put the KV namespace ID into `wrangler.toml`.
 5. Bind the namespace to the Worker with variable name `SITES`.
-6. Enable the Cron Trigger: `*/5 * * * *`.
+6. Enable the Cron Trigger: `*/3 * * * *`.
 7. Deploy.
 
 ### Option B: Wrangler CLI
@@ -71,5 +71,5 @@ use D1 and authentication instead.
 
 ## Cron behavior
 
-Cloudflare Cron invokes the Worker every 5 minutes. The Worker checks all saved
+Cloudflare Cron invokes the Worker every 3 minutes. The Worker checks all saved
 URLs in small batches. The dashboard also lets you trigger a manual check.
