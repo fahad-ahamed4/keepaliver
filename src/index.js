@@ -229,7 +229,7 @@ export default {
       return Response.json(site, {headers:JSON_HEADERS});
     }
 
-    const match = url.pathname.match(/^\\/api\\/sites\\/([^/]+)$/);
+    const match = url.pathname.match(/^\/api\/sites\/([^/]+)$/);
     if (match && request.method === "DELETE") {
       const sites = await getSites(env);
       const filtered = sites.filter(s => s.id !== match[1]);
@@ -237,7 +237,7 @@ export default {
       return Response.json({ok:true},{headers:JSON_HEADERS});
     }
 
-    const checkMatch = url.pathname.match(/^\\/api\\/sites\\/([^/]+)\\/check$/);
+    const checkMatch = url.pathname.match(/^\/api\/sites\/([^/]+)\/check$/);
     if (checkMatch && request.method === "POST") {
       const sites = await getSites(env);
       const site = sites.find(s => s.id === checkMatch[1]);
