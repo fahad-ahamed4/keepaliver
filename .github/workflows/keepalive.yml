@@ -1,0 +1,27 @@
+name: Keep Alive Pinger
+
+# BasicDeploy free tier: container sleeps when idle AND the app does NOT
+# auto-restart after wake. This pinger keeps FasonRat awake by hitting the
+# panel every few minutes. Public repo => Actions minutes are free.
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+    - cron: "2-59/5 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping panels
+        run: |
+          urls=(
+            "https://jw1r4jy6.basicdeploy.com"
+          )
+          for url in "${urls[@]}"; do
+            code=$(curl -s -o /dev/null -w "%{http_code}" --max-time 30 "$url" || true)
+            echo "$(date -u +%FT%TZ) $url -> HTTP $code"
+          done
